@@ -1,6 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import registerServiceWorker from './registerServiceWorker';
+import { Router, browserHistory } from 'react-router';
+import Routes from './routes';
+import registerServiceWorker from './registerServiceWorker';;
 
-ReactDOM.render(<div><h1> Hello world!</h1></div>, document.getElementById('root'));
+ReactDOM.render(
+    <Router
+        history={browserHistory}
+        routes={Routes}
+    >
+    </Router>,
+    document.getElementById('root'));
+
 registerServiceWorker();
