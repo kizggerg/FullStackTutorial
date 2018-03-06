@@ -21,7 +21,29 @@ class AuthService {
     }
 
     authProcess = (authResult) => {
-        console.log(authResult);
+        let {
+            email,
+            exp
+        } = authResult.idTokenPayload
+
+        const idToken = authResult.idToken;
+
+        this.signinUser({
+            idToken,
+            email,
+            exp
+        }).then(
+            success => success,
+            rejected => {
+                this.createUser({
+                    idToken,
+                    email,
+                    exp
+                }).then()
+            }
+        )
+
+        
     }
 
     showLock() {
